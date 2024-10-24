@@ -6,6 +6,8 @@ import Home from './src/Home';
 import Login from './src/Login';
 import Signup from './src/Signup';
 import VerifyEmail from './src/VerifyEmail';
+import ArtisansORClients from './src/ArtisansORClients';
+import ClientDashboard from './src/ClientDashboard';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,39 +33,12 @@ const App = () => {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="VerifyEmail" component={VerifyEmail} />
+        <Stack.Screen name="ArtisansORClients" component={ArtisansORClients} />
+        <Stack.Screen name="ClientDashboard" component={ClientDashboard} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
 export default App;
-
-
-//import * as React from 'react';
-//import { NavigationContainer } from '@react-navigation/native';
-//import { createNativeStackNavigator } from '@react-navigation/native-stack';
-//import { StyleSheet, Text, View } from 'react-native';
-//import Home from './src/Home';
-//import Login from './src/Login';
-//import Signup from './src/Signup';
-//import VerifyEmail from './src/VerifyEmail';
-//
-//
-//// app file, default function handling navigtaion with each screen
-//
-//const Stack = createNativeStackNavigator()
-//
-//export default function App() {
-//  return (
-//    <NavigationContainer>
-//      <Stack.Navigator screenOptions={{headerShown: false}}>
-//        <Stack.Screen name="Home" component={Home} />
-//        <Stack.Screen name="Login" component={Login} />
-//        <Stack.Screen name="Signup" component={Signup}/>
-//        <Stack.Screen name="VerifyEmail" component={VerifyEmail}/>
-//      </Stack.Navigator>
-//
-//    </NavigationContainer>
-//  );
-//}
-//
