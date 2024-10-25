@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { darkGreen } from './Constants'; // Assurez-vous que le chemin est correct
+import { darkGreen } from './Constants';
 
 const ArtisansORClients = ({ navigation }) => {
   return (
@@ -10,7 +10,7 @@ const ArtisansORClients = ({ navigation }) => {
       
       {/* Zone de fond darkGreen pour les options */}
       <View style={styles.optionsBackground}>
-        {/* Option pour Artisan */}
+        {/* Artisan */}
         <TouchableOpacity
           style={styles.choiceContainer}
           onPress={() => navigation.navigate('ArtisansDashboard')}
@@ -19,7 +19,7 @@ const ArtisansORClients = ({ navigation }) => {
           <Text style={styles.choiceText}>Je suis un Artisan</Text>
         </TouchableOpacity>
 
-        {/* Option pour Client */}
+        {/* Client */}
         <TouchableOpacity
           style={styles.choiceContainer}
           onPress={() => navigation.navigate('ClientDashboard')}
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f2f2f2', // Couleur de fond par défaut
+    backgroundColor: '#f2f2f2',
   },
   title: {
     fontSize: 24,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   optionsBackground: {
-    backgroundColor: darkGreen, // Couleur du fond darkGreen
+    backgroundColor: darkGreen,
     padding: 20,
     borderRadius: 10,
     alignItems: 'center',
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     marginVertical: 10,
-    width: '100%', // S'assurer que le choix occupe toute la largeur disponible
-    elevation: 5, // Pour donner un effet d'ombre
+    width: '100%',
+    elevation: 5,
   },
   choiceText: {
     marginTop: 10,
