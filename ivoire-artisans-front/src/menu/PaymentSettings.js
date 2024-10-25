@@ -6,7 +6,7 @@ const PaymentSettings = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>payment settings</Text>
-    
+
     </View>
   );
 };

@@ -6,6 +6,7 @@ const Contacts = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Contacts</Text>
+
     </View>
   );
 };

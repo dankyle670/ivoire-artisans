@@ -6,7 +6,6 @@ const Settings = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Paramètres</Text>
-      {/* Ajoutez d'autres paramètres ici */}
     </View>
   );
 };

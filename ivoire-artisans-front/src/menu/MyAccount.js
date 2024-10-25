@@ -6,7 +6,7 @@ const MyAccount = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Mon Compte</Text>
-      {/* Ajoutez d'autres informations de compte ici */}
+
     </View>
   );
 };

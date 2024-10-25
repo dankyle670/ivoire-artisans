@@ -15,6 +15,8 @@ import Help from './src/menu/Help';
 import SwitchProfile from './src/menu/SwitchProfile';
 import Contacts from './src/menu/Contacts';
 import PaymentSettings from './src/menu/PaymentSettings';
+import Avatar from './src/menu/Avatar';
+
 
 // navigation
 
@@ -50,6 +52,8 @@ const App = () => {
         <Stack.Screen name="Contacts" component={Contacts} />
         <Stack.Screen name="SwitchProfile" component={SwitchProfile} />
         <Stack.Screen name="PaymentSettings" component={PaymentSettings} />
+        <Stack.Screen name="Avatar" component={Avatar} />
+
 
       </Stack.Navigator>
     </NavigationContainer>

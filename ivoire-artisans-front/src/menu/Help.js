@@ -6,7 +6,7 @@ const Help = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Help</Text>
-    
+
     </View>
   );
 };
