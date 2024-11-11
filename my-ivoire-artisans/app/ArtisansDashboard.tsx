@@ -3,14 +3,17 @@ import { View, StyleSheet, Text, TouchableOpacity, Alert } from 'react-native';
 import MapView, { Marker, Region } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { FontAwesome5 } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
-import { green, darkGreen, white } from './Constants';
+import { green, darkGreen, white, lightGray } from './Constants';
 
 const ArtisansDashboard: React.FC = () => {
   const router = useRouter();
   const [region, setRegion] = useState<Region | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [messageCount, setMessageCount] = useState<number>(0);
 
+  // Fetch location of user
   useEffect(() => {
     (async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
@@ -30,9 +33,34 @@ const ArtisansDashboard: React.FC = () => {
     })();
   }, []);
 
+  // Fetch message count from AsyncStorage
+  useEffect(() => {
+    const fetchMessageCount = async () => {
+      const count = await AsyncStorage.getItem('messageCount');
+      if (count) {
+        setMessageCount(parseInt(count));
+      }
+    };
+
+    fetchMessageCount();
+  }, []);
+
   return (
     <View style={styles.container}>
-      {/* Icône de menu */}
+      {/* Chat Icon with Message Count */}
+      <TouchableOpacity
+        style={styles.chatIconContainer}
+        onPress={() => router.push('/ArtisansChat')} // Navigate to chat screen
+      >
+        <FontAwesome5 name="comments" size={44} color={'white'} />
+        {messageCount > 0 && (
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>{messageCount}</Text>
+          </View>
+        )}
+      </TouchableOpacity>
+
+      {/* Menu Icon */}
       <TouchableOpacity
         style={styles.menuIcon}
         onPress={() => router.push('/MenuHomeArtisans')}
@@ -40,7 +68,7 @@ const ArtisansDashboard: React.FC = () => {
         <FontAwesome5 name="bars" size={24} color={darkGreen} />
       </TouchableOpacity>
 
-      {/* Carte */}
+      {/* Map */}
       <MapView
         style={styles.map}
         region={region}
@@ -55,7 +83,7 @@ const ArtisansDashboard: React.FC = () => {
         )}
       </MapView>
 
-      {/* Zone de choix */}
+      {/* Selection Zone */}
       <View style={styles.overlay}>
         <Text style={styles.title}>Choisissez un Artisan</Text>
         <TouchableOpacity style={styles.button}>
@@ -70,6 +98,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: white,
+  },
+  chatIconContainer: {
+    position: 'absolute',
+    top: 60,
+    right: 20,
+    zIndex: 10,
+  },
+  badge: {
+    position: 'absolute',
+    top: -5,
+    right: -10,
+    backgroundColor: 'red',
+    borderRadius: 12,
+    width: 24,
+    height: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  badgeText: {
+    color: white,
+    fontSize: 12,
+    fontWeight: 'bold',
   },
   menuIcon: {
     position: 'absolute',

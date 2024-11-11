@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -8,6 +8,19 @@ import axios from 'axios';
 
 const MenuHomeArtisans: React.FC = () => {
   const router = useRouter();
+  const [messageCount, setMessageCount] = useState<number>(0);
+
+  // Fetch message count from AsyncStorage
+  useEffect(() => {
+    const fetchMessageCount = async () => {
+      const count = await AsyncStorage.getItem('messageCount');
+      if (count) {
+        setMessageCount(parseInt(count));
+      }
+    };
+
+    fetchMessageCount();
+  }, []);
 
   // Handle logout
   const handleLogout = async () => {
@@ -92,9 +105,15 @@ const MenuHomeArtisans: React.FC = () => {
           <Text style={styles.menuText}>Subscription Offers</Text>
         </TouchableOpacity>
 
+        {/* Chat with message count */}
         <TouchableOpacity style={styles.menuItem} onPress={() => router.push('/ArtisansChat')}>
           <FontAwesome5 name="comments" size={24} color="black" />
           <Text style={styles.menuText}>Chat</Text>
+          {messageCount > 0 && (
+            <View style={styles.badge}>
+              <Text style={styles.badgeText}>{messageCount}</Text>
+            </View>
+          )}
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.menuItem} onPress={() => router.push('/ArtisansContact')}>
@@ -156,6 +175,20 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginLeft: 20,
     color: 'black',
+  },
+  badge: {
+    backgroundColor: 'red',
+    borderRadius: 12,
+    width: 24,
+    height: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
+  },
+  badgeText: {
+    color: white,
+    fontSize: 12,
+    fontWeight: 'bold',
   },
 });
 

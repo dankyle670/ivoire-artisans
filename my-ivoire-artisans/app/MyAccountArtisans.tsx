@@ -12,7 +12,7 @@ const MyAccountArtisans: React.FC = () => {
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-  const [subscription, setSubscription] = useState<string>('');
+  const [subscription, setSubscription] = useState<string>(''); // Default subscription
   const [profilePicture, setProfilePicture] = useState<string | null>(null);
   const [userId, setUserId] = useState<string>(''); // Using userId as artisan ID
   const [transactionHistory, setTransactionHistory] = useState([]);
@@ -38,7 +38,7 @@ const MyAccountArtisans: React.FC = () => {
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
-        setSubscription(subscription);
+        setSubscription(subscription); // Set subscription from API
         setUserId(_id); // Set userId directly
         setProfilePicture(profilePicture);
       } catch (err) {
@@ -64,11 +64,10 @@ const MyAccountArtisans: React.FC = () => {
   const handleSave = async () => {
     try {
       const response = await axios.put('https://ivoire-artisans-server.netlify.app/api/user', {
+        userId,
         firstName,
         lastName,
         email,
-        subscription,
-        profilePicture,
       });
       if (response.status === 200) {
         alert('Account updated successfully!');
@@ -78,14 +77,15 @@ const MyAccountArtisans: React.FC = () => {
     }
   };
 
-  const handleLogout = () => {
-    router.push('/Login');
+  // Navigate to the subscription page
+  const navigateToSubscription = () => {
+    router.push('/ArtisansSubscriptionOffers');
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.formContainer}>
-        <Text style={styles.header}>My Account</Text>
+        <Text style={styles.header}></Text>
 
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
@@ -108,6 +108,7 @@ const MyAccountArtisans: React.FC = () => {
             value={firstName}
             onChangeText={setFirstName}
             placeholder="Enter your first name"
+            
           />
         </View>
 
@@ -132,14 +133,12 @@ const MyAccountArtisans: React.FC = () => {
           />
         </View>
 
+        {/* Replace the subscription TextInput with a button */}
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Subscription Plan</Text>
-          <TextInput
-            style={styles.input}
-            value={subscription}
-            onChangeText={setSubscription}
-            placeholder="Subscription plan (e.g., Basic, Premium)"
-          />
+          <TouchableOpacity style={styles.subscriptionButton} onPress={navigateToSubscription}>
+            <Text style={styles.subscriptionButtonText}>{subscription || 'Select a plan'}</Text>
+          </TouchableOpacity>
         </View>
 
         <Text style={styles.sectionHeader}>Transaction History</Text>
@@ -156,10 +155,6 @@ const MyAccountArtisans: React.FC = () => {
           btnLabel="Save Changes"
           Press={handleSave}
         />
-
-        <TouchableOpacity onPress={handleLogout} style={styles.logoutBtn}>
-          <Text style={styles.logoutText}>Logout</Text>
-        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -174,7 +169,7 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     width: '100%',
-    backgroundColor: white,
+    backgroundColor: 'white',
     borderRadius: 20,
     padding: 20,
     alignItems: 'center',
@@ -209,7 +204,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   profileImageText: {
-    color: darkGreen,
+    color: 'black',
   },
   artisanID: {
     fontSize: 16,
@@ -234,6 +229,21 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     fontSize: 16,
+    color: 'black',
+  },
+  subscriptionButton: {
+    width: '100%',
+    padding: 10,
+    borderColor: lightGray,
+    borderWidth: 1,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: lightGray,
+  },
+  subscriptionButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
     color: darkGreen,
   },
   sectionHeader: {
@@ -250,16 +260,6 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderBottomColor: lightGray,
     borderBottomWidth: 1,
-  },
-  logoutBtn: {
-    marginTop: 30,
-    backgroundColor: 'red',
-    padding: 10,
-    borderRadius: 10,
-  },
-  logoutText: {
-    color: white,
-    fontWeight: 'bold',
   },
 });
 
