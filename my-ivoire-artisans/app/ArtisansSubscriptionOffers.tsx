@@ -3,10 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-nati
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { darkGreen, white, lightGray } from './Constants';
+import { red } from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
 
 // Define unique colors for each plan
 const PLAN_COLORS = {
-  basic: '#A3D8A3',     // Light Green for Basic
+  basic: darkGreen,     // Light Green for Basic
   premium: '#FFD700',   // Gold for Premium
   last: 'black',        // Black for Last
 };
@@ -144,8 +145,8 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   selectedCard: {
-    borderColor: darkGreen,
-    shadowOpacity: 0.3,
+    borderColor: 'white',
+    shadowOpacity: 0.7,
   },
   planName: {
     fontSize: 24,

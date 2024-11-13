@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
   artisanID: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: darkGreen,
+    color: 'black',
     marginBottom: 20,
   },
   inputContainer: {
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: darkGreen,
+    color: 'black',
     marginBottom: 5,
   },
   input: {
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
   subscriptionButtonText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: darkGreen,
+    color: 'black',
   },
   sectionHeader: {
     fontSize: 18,

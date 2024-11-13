@@ -35,7 +35,7 @@ const PaymentSettings: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Payment Settings</Text>
+      <Text style={styles.header}> </Text>
 
       {/* Orange Money Account */}
       <View style={styles.paymentOption}>
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 18,
-    color: darkGreen,
+    color: 'black',
     marginBottom: 10,
   },
   button: {

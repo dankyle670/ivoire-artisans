@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     width: 350,
     paddingVertical: 10,
     marginVertical: 0,
-    bottom: 30,
+    bottom: 10,
   },
   text: {
     fontSize: 25,
