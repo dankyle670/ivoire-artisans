@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 350,
     paddingVertical: 10,
-    marginVertical: 5,
+    marginVertical: 0,
+    bottom: 30,
   },
   text: {
     fontSize: 25,

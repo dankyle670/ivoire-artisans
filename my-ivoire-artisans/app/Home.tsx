@@ -34,21 +34,20 @@ const Home: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
     alignItems: 'center',
     flex: 1,
   },
   text: {
-    color: 'black',
+    color: darkGreen,
     fontSize: 64,
     position: 'absolute',
-    top: 100,
+    top: 50,
     left: 20,
   },
   Btn: {
     alignSelf: 'flex-end',
     position: 'absolute',
-    bottom: 50,
+    bottom: 40,
     left: 30,
   },
 });

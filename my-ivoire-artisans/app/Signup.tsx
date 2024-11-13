@@ -108,12 +108,6 @@ const Signup: React.FC = () => {
               Privacy Policy
             </Text>
           </View>
-          <Btn
-            textColor="white"
-            bgColor={darkGreen}
-            btnLabel="Signup"
-            Press={handleSignup}
-          />
           <View style={styles.loginContainer}>
             <Text style={{ fontSize: 16, fontWeight: 'bold' }}>
               Already have an account?{' '}
@@ -124,8 +118,14 @@ const Signup: React.FC = () => {
               </Text>
             </TouchableOpacity>
           </View>
+          <TouchableOpacity style={styles.button} onPress={handleSignup}>
+            <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold' }}>
+              Sign Up
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
+      
     </Background>
   );
 };
@@ -171,6 +171,14 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  button: {
+    backgroundColor: darkGreen,
+    borderRadius: 100,
+    alignItems: 'center',
+    width: 350,
+    paddingVertical: 15,
+    bottom: -200,
   },
 });
 

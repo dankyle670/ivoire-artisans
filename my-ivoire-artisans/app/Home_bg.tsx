@@ -8,33 +8,20 @@ type BackgroundProps = {
 // Background component with image background
 const Background: React.FC<BackgroundProps> = ({ children }) => {
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('./assets/assetss/leaves.jpg')}
-        style={styles.image}
-      />
-      <View style={styles.overlay}>
-        {children}
-      </View>
-    </View>
+    <ImageBackground
+      source={require('./assets/assetss/ivoire-artisanslogo.webp')}
+      style={styles.image}
+    >
+      {children}
+    </ImageBackground>
   );
 };
 
 // Custom styles for Background
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   image: {
-    height: '100%',
-    width: '100%',
-  },
-  overlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    flex: 1, // Make the image cover the entire container
+    justifyContent: 'center', // Optional, to center children
   },
 });
 
